@@ -41,8 +41,8 @@ async def create_qr_code(request: QRCodeRequest, token: str = Depends(oauth2_sch
     if qr_code_full_path.exists():
         logging.info("QR code already exists.")
         # If it exists, return a conflict response
-        return JSONResponse(
-            status_code=status.HTTP_200_OK,
+        return JSONResponse( 
+            status_code=409,
             content={"message": "QR code already exists.", "links": links}
         )
 
